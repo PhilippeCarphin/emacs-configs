@@ -1,31 +1,16 @@
-#+TITLE: Powerful things with simple configs
+#+TITLE: Small configs that do big things
 
 A set of small standalone configs that unlock awesome powers.
 
-* Small configs that do big things
+Open the [[try-configs.org][=try-configs.org]] file in Emacs and use =C-c C-c= to run parts of
+config.
 
-To try out the awesome power of simple configs, any of the files of this repo
-can be used as a standalone =~/.emacs.d/init.el=.
+Open the [[try-actions.org][=try-actions.org=]] file in Emacs to try things out and get an overview
+of possible actions organized by level:
 
-To try them out quick, add the following to your own =~/.emacs.d/init.el= and
-uncomment the parts that you want to use.
-
-#+begin_src 
-(setq emacs-configs-repo "~/Documents/GitHub/emacs-configs")
-
-;; (load-file (concat emacs-config-repo "/babel-config.el")
-;; (load-file (concat emacs-config-repo "/org-export-config.el")
-;; (load-file (concat emacs-config-repo "/basic-configs.el")
-;; (load-file (concat emacs-config-repo "/helpers.el")
-;; (load-file (concat emacs-config-repo "/evil-config.el")
-#+end_src
-
-*Note* : To make each file usable standalone, I have repeated code accross some
- files.  This causes warnings.  If you use these configs in your own, be mindful
- not to copy-paste duplicated code.
-
-Duplicated code is mostly the adding to
- =package-archives= and installing =use-package=, and there is also the setting
- of =org-agenda-files= that is repeated.
- 
-
+0. No config required and easy to do
+1. Some config required easy to do
+2. Easy to learn
+3. Requires work to learn
+4. Advanced stuff that requires more substancial effort
+5. Master stuff
