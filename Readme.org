@@ -2,8 +2,7 @@
 
 A set of small standalone configs that unlock awesome powers.
 
-Open the [[try-configs.org][=try-configs.org]] file in Emacs and use =C-c C-c= to run parts of
-config.
+Open the [[try-configs.org][=try-configs.org]] file in Emacs and use =C-c C-c= with your cursor on a source block to run that part of the config.
 
 1. Run code and capture output in document with babel
 2. Export orgmond documents into any format (LaTeX, HTML, RST, Reveal.JS, Markdown, Github Flavored Markdown
@@ -19,3 +18,10 @@ of possible actions organized by level:
 3. Requires work to learn
 4. Advanced stuff that requires more substancial effort
 5. Master stuff
+
+* References
+
+- [[https://en.wikipedia.org/wiki/Org-mode][Wikipedia : Org-mode]]
+- [[https://orgmode.org]]
+- Article by Carsten Dominik et al.  [[https://www.researchgate.net/publication/231337373_A_Multi-Language_Computing_Environment_for_Literate_Programming_and_Reproducible_Research][A Multi-Language Computing Environment for Literate Programming and Reproducible Research]]
+- [[https://www.youtube.com/watch?v=oJTwQvgfgMM][Google Tech Talk in 2008 by Carsten Dominik]]
