@@ -9,3 +9,9 @@
 
 ;; Nicer vertical alignment in the agenda
 (setq org-agenda-prefix-format  '((agenda . "%-12t%-12s")))
+
+;; Use agenda files as refile targets
+(setq org-refile-targets '((nil :maxlevel . 3) (org-agenda-files :maxlevel . 3)))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path 'file)
+

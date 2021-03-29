@@ -1,9 +1,4 @@
 
-;; Use agenda files as refile targets
-(setq org-refile-targets '((nil :maxlevel . 3) (org-agenda-files :maxlevel . 3)))
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-use-outline-path 'file)
-
 ;; Define new TODO keywords
 (setq org-todo-keywords 
       '((sequence "TODO" "WAITING" "VERIFY" "|" "DONE")
