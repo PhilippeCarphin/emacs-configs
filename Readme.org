@@ -5,6 +5,11 @@ A set of small standalone configs that unlock awesome powers.
 Open the [[try-configs.org][=try-configs.org]] file in Emacs and use =C-c C-c= to run parts of
 config.
 
+1. Run code and capture output in document with babel
+2. Export orgmond documents into any format (LaTeX, HTML, RST, Reveal.JS, Markdown, Github Flavored Markdown
+3. Use the org agenda
+4. Take notes and organize knowledge like a boss
+
 Open the [[try-actions.org][=try-actions.org=]] file in Emacs to try things out and get an overview
 of possible actions organized by level:
 
