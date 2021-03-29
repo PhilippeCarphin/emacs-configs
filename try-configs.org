@@ -6,7 +6,7 @@ block.  You can also evaluate individual S-expressions by using =C-x C-e=.
 Each of the configs from each section can be used standalone.
 
 * Babel
-#+begin_src emacs-lisp :tangle babel-config.el      
+#+begin_src emacs-lisp :tangle elisp/babel-config.el
 (setq org-confirm-babel-evaluate nil)
 (org-babel-do-load-languages 'org-babel-load-languages
 			     '((shell . t)
@@ -14,7 +14,7 @@ Each of the configs from each section can be used standalone.
 (setq org-export-use-babel nil)
 #+end_src
 * Org exporting
-#+begin_src emacs-lisp :tangle "org-export-config.el"
+#+begin_src emacs-lisp :tangle "elisp/org-export-config.el"
 ;; Package bootstrap
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -36,7 +36,7 @@ Each of the configs from each section can be used standalone.
 (use-package htmlize :ensure t)
 #+end_src
 * Basic configs
-#+begin_src emacs-lisp :tangle "basic-configs.el"
+#+begin_src emacs-lisp :tangle "elisp/basic-configs.el"
 ;; Looks
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-buffer-menu t)
@@ -70,7 +70,7 @@ Each of the configs from each section can be used standalone.
 (custom-set-variables '(indent-tabs-mode nil))
 #+end_src
 * Evil mode
-#+begin_src emacs-lisp :tangle "evil-config.el"
+#+begin_src emacs-lisp :tangle "elisp/evil-config.el"
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/") t)
@@ -115,7 +115,7 @@ Each of the configs from each section can be used standalone.
   (blink-cursor-mode 0))
 #+end_src
 * Fast notes
-#+begin_src emacs-lisp :tangle "fast-notes.el"
+#+begin_src emacs-lisp :tangle "elisp/fast-notes.el"
 ;; A platform independant directory for orgmode files
 (cond ((string-equal system-type "windows-nt")
        (progn (setq org-agenda-dir "c:\\Users\\phil1\\Documents\\gtd")))
@@ -154,7 +154,7 @@ Each of the configs from each section can be used standalone.
 	 "* GTD-IN %?\n %i\n %a" :kill-buffer t)))
 #+end_src
 * Helpers
-#+begin_src emacs-lisp :tangle "helpers.el"
+#+begin_src emacs-lisp :tangle "elisp/helpers.el"
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/") t)
@@ -192,7 +192,7 @@ Each of the configs from each section can be used standalone.
   (setq company-idle-delay 0))
 #+end_src
 * Agenda
-#+begin_src emacs-lisp :tangle "org-agenda-config.el"
+#+begin_src emacs-lisp :tangle "elisp/org-agenda-config.el"
 ;; Set cross-platform directory : ~/Documents/gtd
 (cond ((string-equal system-type "windows-nt")
        (progn (setq org-agenda-dir "c:\\Users\\phil1\\Documents\\gtd")))
@@ -212,7 +212,7 @@ Each of the configs from each section can be used standalone.
 
 #+end_src
 ** Addons
-#+begin_src emacs-lisp :tangle "org-agenda-addons.el"
+#+begin_src emacs-lisp :tangle "elisp/org-agenda-addons.el"
 ;; Define new TODO keywords
 (setq org-todo-keywords 
       '((sequence "TODO" "WAITING" "VERIFY" "|" "DONE")
