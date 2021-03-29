@@ -1,5 +1,7 @@
 #+TITLE: Powerful things with simple configs
 
+A set of small standalone configs that unlock awesome powers.
+
 * Small configs that do big things
 
 To try out the awesome power of simple configs, any of the files of this repo
