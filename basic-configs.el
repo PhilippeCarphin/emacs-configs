@@ -12,8 +12,10 @@
 (custom-set-variables '(cursor-type '(bar . 4)))
 (custom-set-faces '(cursor ((t (:background "SlateGray3")))))
 (blink-cursor-mode)
-(global-hl-line-mode 1)
 
+;; Higlight current line
+;; Looks good in some themes but not others
+;; (global-hl-line-mode 1)
 
 ;; Smooth scrolling and keep cursor 10 lines away from top and bottom
 (setq scroll-step 1)
