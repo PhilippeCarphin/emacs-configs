@@ -2,29 +2,11 @@
 
 Open this file in Emacs and try stuff as you go through it.
 
+You may want to also have the =try-configs.org= file open and run configs from there.
+
 * Babel
 With almost nothing to add and strictly nothing to download, we can do really
 cool stuff with Babel.
-** Config
-#+begin_src emacs-lisp
-(setq org-confirm-babel-evaluate nil)
-(org-babel-do-load-languages 'org-babel-load-languages
-			     '((shell . t)
-			       (python . t)))
-(setq org-export-use-babel nil)
-
-;; https://emacs.stackexchange.com/a/63562/19972
-(defun ek/babel-ansi ()
-  (when-let ((beg (org-babel-where-is-src-block-result nil nil)))
-    (save-excursion
-      (goto-char beg)
-      (when (looking-at org-babel-result-regexp)
-        (let ((end (org-babel-result-end))
-              (ansi-color-context-region nil))
-          (ansi-color-apply-on-region beg end))))))
-(add-hook 'org-babel-after-execute-hook 'ek/babel-ansi)
-#+end_src
-
 ** Level 0 : Run shell blocks
 
 Use =C-c C-,= to help with creation of =#+begin_src <lang> :results output=
@@ -41,24 +23,6 @@ Exporting to HTML is built-in with org, but by installing other export backends,
 we can do some crazy stuff.  Nicer HTML, RST for sphinx documentation, Reveal.js
 presentations and Github flavored markdown.
 
-** Config
-#+begin_src emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("gnu"   . "http://elpa.gnu.org/packages/") t)
-(package-initialize)
-(unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-(eval-when-compile (require 'use-package))
-(use-package ox-gfm :ensure t)
-(use-package ox-rst :ensure t)
-(use-package ox-twbs :ensure t)
-(use-package ox-reveal :ensure t
-  :config (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
-(use-package htmlize :ensure t)
-#+end_src
 ** Level 0 : stars and tabs source blocks
 - The star key, the TAB key and the =C-c C-,= to insert source blocks.
 - Inline markup with *bold* (=*bold*=), /italic/ (=/italic/=), =code()= (~=code()=~), ~verbatim~ (=~verbatim~=)
@@ -87,17 +51,6 @@ like making list items appear one by one.
 ** Level 5 : Publishing
 * Agenda
 All the power of the org agenda is at our disposal if we just set =org-agenda-files=
-** Config
-#+begin_src emacs-lisp
-(setq org-agenda-files (list "~/Documents/gtd"))
-
-;; Use agenda files as refile targets
-(setq org-refile-targets '((nil :maxlevel . 3) (org-agenda-files :maxlevel . 3)))
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-use-outline-path 'file)
-#+end_src
-The actual config file sets this path in a cross-platform way and adds little
-niceties that only affect display in =org-agenda-addons.el=.
 ** Level 0 : Datestamps, SCHEDULED:, DAEADLINE:
 
 Insert datestamps in text with =C-c .=.

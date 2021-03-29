@@ -1,4 +1,11 @@
+#+TITLE: Try Configurations
 
+Open this file in Emacs and press =C-c C-c= while your cursor is on a source
+block.  You can also evaluate individual S-expressions by using =C-x C-e=.
+
+Each of the configs from each section can be used standalone.
+
+* Babel
 #+begin_src emacs-lisp :tangle babel-config.el      
 (setq org-confirm-babel-evaluate nil)
 (org-babel-do-load-languages 'org-babel-load-languages
@@ -6,7 +13,7 @@
 			       (python . t)))
 (setq org-export-use-babel nil)
 #+end_src
-
+* Org exporting
 #+begin_src emacs-lisp :tangle "org-export-config.el"
 ;; Package bootstrap
 (require 'package)
@@ -28,7 +35,7 @@
   :config (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
 (use-package htmlize :ensure t)
 #+end_src
-
+* Basic configs
 #+begin_src emacs-lisp :tangle "basic-configs.el"
 ;; Looks
 (setq inhibit-startup-screen t)
@@ -62,7 +69,7 @@
 (setq-default fill-column 80)
 (custom-set-variables '(indent-tabs-mode nil))
 #+end_src
-
+* Evil mode
 #+begin_src emacs-lisp :tangle "evil-config.el"
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -107,6 +114,7 @@
   (setq blink-cursor-blinks 0)
   (blink-cursor-mode 0))
 #+end_src
+* Fast notes
 #+begin_src emacs-lisp :tangle "fast-notes.el"
 ;; A platform independant directory for orgmode files
 (cond ((string-equal system-type "windows-nt")
@@ -145,6 +153,7 @@
 	("c" "Emacs config" entry (file emacs-config-file)
 	 "* GTD-IN %?\n %i\n %a" :kill-buffer t)))
 #+end_src
+* Helpers
 #+begin_src emacs-lisp :tangle "helpers.el"
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -182,6 +191,27 @@
   :config (global-company-mode)
   (setq company-idle-delay 0))
 #+end_src
+* Agenda
+#+begin_src emacs-lisp :tangle "org-agenda-config.el"
+;; Set cross-platform directory : ~/Documents/gtd
+(cond ((string-equal system-type "windows-nt")
+       (progn (setq org-agenda-dir "c:\\Users\\phil1\\Documents\\gtd")))
+      ((string-equal system-type "darwin")
+       (progn (setq org-agenda-dir "~/Documents/gtd/")))
+      ((string-equal system-type "gnu/linux")
+       (progn (setq org-agenda-dir "~/Documents/gtd/"))))
+(setq org-agenda-files (list org-agenda-dir))
+
+;; Nicer vertical alignment in the agenda
+(setq org-agenda-prefix-format  '((agenda . "%-12t%-12s")))
+
+;; Use agenda files as refile targets
+(setq org-refile-targets '((nil :maxlevel . 3) (org-agenda-files :maxlevel . 3)))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path 'file)
+
+#+end_src
+** Addons
 #+begin_src emacs-lisp :tangle "org-agenda-addons.el"
 ;; Define new TODO keywords
 (setq org-todo-keywords 
@@ -201,23 +231,4 @@
         ("GTD-REFERENCE" :foreground "#00ff00" :weight normal :underline nil)
         ("GTD-SOMEDAY-MAYBE" :foreground "#7c7c74" :weight normal :underline nil)
         ("GTD-DONE" :foreground "#00ff00" :weight normal :underline nil)))
-#+end_src
-#+begin_src emacs-lisp :tangle "org-agenda-config.el"
-;; Set cross-platform directory : ~/Documents/gtd
-(cond ((string-equal system-type "windows-nt")
-       (progn (setq org-agenda-dir "c:\\Users\\phil1\\Documents\\gtd")))
-      ((string-equal system-type "darwin")
-       (progn (setq org-agenda-dir "~/Documents/gtd/")))
-      ((string-equal system-type "gnu/linux")
-       (progn (setq org-agenda-dir "~/Documents/gtd/"))))
-(setq org-agenda-files (list org-agenda-dir))
-
-;; Nicer vertical alignment in the agenda
-(setq org-agenda-prefix-format  '((agenda . "%-12t%-12s")))
-
-;; Use agenda files as refile targets
-(setq org-refile-targets '((nil :maxlevel . 3) (org-agenda-files :maxlevel . 3)))
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-use-outline-path 'file)
-
 #+end_src

@@ -1,4 +1,3 @@
-
 ;; Define new TODO keywords
 (setq org-todo-keywords 
       '((sequence "TODO" "WAITING" "VERIFY" "|" "DONE")

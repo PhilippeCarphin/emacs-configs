@@ -1,4 +1,3 @@
-
 ;; A platform independant directory for orgmode files
 (cond ((string-equal system-type "windows-nt")
        (progn (setq org-agenda-dir "c:\\Users\\phil1\\Documents\\gtd")))
