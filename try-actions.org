@@ -1,5 +1,7 @@
 #+TITLE: Trying Stuff
 
+*NOTE* This file is best viewed in Emacs.
+
 Open this file in Emacs and try stuff as you go through it.
 
 You may want to also have the =try-configs.org= file open and run configs from there.
