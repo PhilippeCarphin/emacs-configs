@@ -6,6 +6,50 @@ Open this file in Emacs and try stuff as you go through it.
 
 You may want to also have the =try-configs.org= file open and run configs from there.
 
+* Orgmode for document generation
+Exporting to HTML is built-in with org, but by installing other export backends,
+we can do some crazy stuff.  Nicer HTML, RST for sphinx documentation, Reveal.js
+presentations and Github flavored markdown.
+
+Orgmode is as easy to write as markdown but offers so much more cool stuff.
+
+** Level 0 : stars and tabs source blocks
+- The star key to define headlines (this is the easiest and most important part)
+- Inline markup with *bold* (=*bold*=), /italic/ (=/italic/=), =code()= (~=code()=~), ~verbatim~ (=~verbatim~=)
+- Source code blocks use =#+begin_src <lang>= ... =#+end_src=.  We can use =C-c C-,= to insert these tags.
+- the TAB to control visibility
+** Level 1 : Exporting
+C-c C-e h o to export to HTML (C-c C-e gives all the options)
+[[https://orgmode.org/manual/Exporting.html][Orgmode doc: Exporting]]
+** Level 2 : Nicer look
+Just install some packages that give extra exporting options
+- Install package htmlize : Colored code in all exports
+- Install ox-twbs : =C-c C-e w o= to get much nicer HTML.
+- Install ox-rst : =C-c C-e r r= to export to RST for sphinx doc
+** Level 3 : Intermediate exporting
+
+Install ox-reveal : =C-c C-e R B= create and view SICK reveal presentation (try
+it with this file).
+
+This is more advanced because it requires understanding reveal whereas the other
+export formats, you don't care what you will be exporting to when you write you
+org document.
+
+For reveal, *all you need to do* is make sure that the content of a headline
+stays very small.  If you do just that, in general, your document will export to
+a good presentation.
+
+After that, the =ox-reveal= documentation explains all the cool stuff you can do
+like making list items appear one by one.
+
+** Level 4 : Advanced exporting
+We can learn how to control export settings and get more fine grained control
+over how things are exported   
+** Level 5 : Publishing
+We can use org-publish to manage exporting a set of orgmode files to multiple
+formats.
+
+People use this to make websites, it's very powerful.
 * Babel
 With almost nothing to add and strictly nothing to download, we can do really
 cool stuff with Babel.
@@ -62,90 +106,6 @@ int my_function(int a, int b)
 
 ** Level 5 : The video
 https://www.youtube.com/watch?v=0g9BcZvQbXU
-* Orgmode for document generation
-Exporting to HTML is built-in with org, but by installing other export backends,
-we can do some crazy stuff.  Nicer HTML, RST for sphinx documentation, Reveal.js
-presentations and Github flavored markdown.
-
-Orgmode is as easy to write as markdown but offers so much more cool stuff.
-
-** Level 0 : stars and tabs source blocks
-- The star key to define headlines (this is the easiest and most important part)
-- Inline markup with *bold* (=*bold*=), /italic/ (=/italic/=), =code()= (~=code()=~), ~verbatim~ (=~verbatim~=)
-- Source code blocks use =#+begin_src <lang>= ... =#+end_src=.  We can use =C-c C-,= to insert these tags.
-- the TAB to control visibility
-** Level 1 : Exporting
-C-c C-e h o to export to HTML (C-c C-e gives all the options)
-[[https://orgmode.org/manual/Exporting.html][Orgmode doc: Exporting]]
-** Level 2 : Nicer look
-Just install some packages that give extra exporting options
-- Install package htmlize : Colored code in all exports
-- Install ox-twbs : =C-c C-e w o= to get much nicer HTML.
-- Install ox-rst : =C-c C-e r r= to export to RST for sphinx doc
-** Level 3 : Intermediate exporting
-
-Install ox-reveal : =C-c C-e R B= create and view SICK reveal presentation (try
-it with this file).
-
-This is more advanced because it requires understanding reveal whereas the other
-export formats, you don't care what you will be exporting to when you write you
-org document.
-
-For reveal, *all you need to do* is make sure that the content of a headline
-stays very small.  If you do just that, in general, your document will export to
-a good presentation.
-
-After that, the =ox-reveal= documentation explains all the cool stuff you can do
-like making list items appear one by one.
-
-** Level 4 : Advanced exporting
-We can learn how to control export settings and get more fine grained control
-over how things are exported   
-** Level 5 : Publishing
-We can use org-publish to manage exporting a set of orgmode files to multiple
-formats.
-
-People use this to make websites, it's very powerful.
-
-* Agenda
-All the power of the org agenda is at our disposal if we just set =org-agenda-files=
-** Level 0 : Datestamps, SCHEDULED:, DAEADLINE:
-
-Insert datestamps in text with =C-c .=.
-
-Set a scheduled date with =C-c C-s= to make things show up in the agenda on that
-day (and at that time if a time is set).
-
-Set a deadline with =C-c C-d=.  A lead time can be added textually like
-<2021-03-26 Fri -4d> to control when the item will start showing up in the agenda.
-** Level 1 : Look at the agenda view
-
-And use =M-x org-agenda-list= to show the basic agenda view. (*Vim people* just
-remember not to press =j,k= here).
-
-Right click on an item to jump to it in the orgmode file.
-
-Press =q= to quit the agenda view.
-** Level 2 : Do things with the agenda
-
-With you cursor on an item, you can use =C-c C-s= and =C-c C-d= to changed the
-scheduled date or the deadline of the item.
-
-Use =C-u r= to reload the agenda view to see the effect of modifications.
-
-At level 0, you would have clicked on the item to go to it in the orgmode file,
-do =C-c C-s= to change the scheduled date, then reload the agenda manually by
-quitting it and redoing =org-agenda-list=.
-*** Bonus : Bulk actions and queries
-** Level 3 : Basic agenda-custom-commands
-** Level 4 : Advanced agenda-custom-commands
-** Level 5 : Exporting and publishing agenda views for your collegues to see you schedule
-
-Keep your work stuff in a separate files (it can be in the same directory as
-your other orgmode files)
-
-Create a function that does =(progn (org-agenda-list) (org-agenda-list "work-agenda.html")= but
-inside a =(let ((org-agenda-files (list "work-project-list.org" "work-actions-list.org"))) ...)=
 * Knowlege management and emails
 ** Config
 The variable =org-agenda-files= must be set to a list of files or directories.
@@ -188,4 +148,43 @@ I was wrong!  It's easy to learn and it saves more time than I thought.
 The fact that with refile you don't need to change to promote or demote the
 heading no matter where you are sending it is a big time saver.
 ** Level 3 : Keep your things organized!
+* Agenda
+All the power of the org agenda is at our disposal if we just set =org-agenda-files=
+** Level 0 : Datestamps, SCHEDULED:, DAEADLINE:
+
+Insert datestamps in text with =C-c .=.
+
+Set a scheduled date with =C-c C-s= to make things show up in the agenda on that
+day (and at that time if a time is set).
+
+Set a deadline with =C-c C-d=.  A lead time can be added textually like
+<2021-03-26 Fri -4d> to control when the item will start showing up in the agenda.
+** Level 1 : Look at the agenda view
+
+And use =M-x org-agenda-list= to show the basic agenda view. (*Vim people* just
+remember not to press =j,k= here).
+
+Right click on an item to jump to it in the orgmode file.
+
+Press =q= to quit the agenda view.
+** Level 2 : Do things with the agenda
+
+With you cursor on an item, you can use =C-c C-s= and =C-c C-d= to changed the
+scheduled date or the deadline of the item.
+
+Use =C-u r= to reload the agenda view to see the effect of modifications.
+
+At level 0, you would have clicked on the item to go to it in the orgmode file,
+do =C-c C-s= to change the scheduled date, then reload the agenda manually by
+quitting it and redoing =org-agenda-list=.
+*** Bonus : Bulk actions and queries
+** Level 3 : Basic agenda-custom-commands
+** Level 4 : Advanced agenda-custom-commands
+** Level 5 : Exporting and publishing agenda views for your collegues to see you schedule
+
+Keep your work stuff in a separate files (it can be in the same directory as
+your other orgmode files)
+
+Create a function that does =(progn (org-agenda-list) (org-agenda-list "work-agenda.html")= but
+inside a =(let ((org-agenda-files (list "work-project-list.org" "work-actions-list.org"))) ...)=
 * GTD-ACTION What Else?
