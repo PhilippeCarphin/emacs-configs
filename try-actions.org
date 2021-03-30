@@ -15,29 +15,77 @@ Use =C-c C-,= to help with creation of =#+begin_src <lang> :results output=
 ... =#+end_src=.
 
 Always put =:results output= for Python and don't worry about it for now.
+#+begin_src shell :results output
+ls
+#+end_src
+
 ** Level 1 : Use the =:dir= header argument workdir of block
+
+#+begin_src shell :results output :dir /tmp
+ls
+#+end_src
+
+#+RESULTS:
+: com.apple.launchd.1vx3i9e6B1
+: com.apple.launchd.v5lA2IhPZW
+: com.docker.docker.Sparkle.pid
+: com.google.Keystone
+: powerlog
+: tmux-502
+
 ** Level 2 : User the =:var= header argument to inject values
+
+#+begin_src shell :results output :dir /tmp :var greeting="Hello"
+echo "$greeting World!"
+#+end_src
+
+#+RESULTS:
+: Hello World!
+
 ** Level 3 : Use blocks to create files and create complex documentation
+See the example repo [[https://github.com/PhilippeCarphin/org-babel-cmake-project][CMake project with CTest with orgmode babel]]
 ** Level 4 : Named blocks : Use output of source blocks in text and in other source blocks.
+We can do stuff like this to do some really cool things.
+#+name: myfunction
+#+begin_src c :exports none
+int my_function(int a, int b)
+#+end_src
+
+#+begin_src c :noweb yes :results none :tangle mylibrary.c
+#include <stdio.h>
+<<myfunction>>{
+  const int sum = a + b;
+  printf("The sum of %d and %d is %d\n", a,b,sum);
+  return sum;
+}
+#+end_src
+
 ** Level 5 : The video
+https://www.youtube.com/watch?v=0g9BcZvQbXU
 * Orgmode for document generation
 Exporting to HTML is built-in with org, but by installing other export backends,
 we can do some crazy stuff.  Nicer HTML, RST for sphinx documentation, Reveal.js
 presentations and Github flavored markdown.
 
+Orgmode is as easy to write as markdown but offers so much more cool stuff.
+
 ** Level 0 : stars and tabs source blocks
-- The star key, the TAB key and the =C-c C-,= to insert source blocks.
+- The star key to define headlines (this is the easiest and most important part)
 - Inline markup with *bold* (=*bold*=), /italic/ (=/italic/=), =code()= (~=code()=~), ~verbatim~ (=~verbatim~=)
+- Source code blocks use =#+begin_src <lang>= ... =#+end_src=.  We can use =C-c C-,= to insert these tags.
+- the TAB to control visibility
 ** Level 1 : Exporting
 C-c C-e h o to export to HTML (C-c C-e gives all the options)
+[[https://orgmode.org/manual/Exporting.html][Orgmode doc: Exporting]]
 ** Level 2 : Nicer look
 Just install some packages that give extra exporting options
-Install package htmlize : Colored code in all exports
-Install ox-twbs : =C-c C-e w o= to get much nicer HTML.
-Install ox-rst : =C-c C-e r r= to export to RST for sphinx doc
+- Install package htmlize : Colored code in all exports
+- Install ox-twbs : =C-c C-e w o= to get much nicer HTML.
+- Install ox-rst : =C-c C-e r r= to export to RST for sphinx doc
 ** Level 3 : Intermediate exporting
 
-Install ox-reveal : =C-c C-e R B= create and view SICK reveal presentation
+Install ox-reveal : =C-c C-e R B= create and view SICK reveal presentation (try
+it with this file).
 
 This is more advanced because it requires understanding reveal whereas the other
 export formats, you don't care what you will be exporting to when you write you
@@ -49,8 +97,16 @@ a good presentation.
 
 After that, the =ox-reveal= documentation explains all the cool stuff you can do
 like making list items appear one by one.
+
 ** Level 4 : Advanced exporting
+We can learn how to control export settings and get more fine grained control
+over how things are exported   
 ** Level 5 : Publishing
+We can use org-publish to manage exporting a set of orgmode files to multiple
+formats.
+
+People use this to make websites, it's very powerful.
+
 * Agenda
 All the power of the org agenda is at our disposal if we just set =org-agenda-files=
 ** Level 0 : Datestamps, SCHEDULED:, DAEADLINE:
