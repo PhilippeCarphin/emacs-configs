@@ -4,9 +4,14 @@
 ;; (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (custom-set-variables '(custom-enabled-themes '(misterioso)))
+;; Orgmode looks
 (custom-set-variables '(org-startup-with-inline-images t))
-(custom-set-variables '(org-startup-folded t))
 (custom-set-variables '(org-image-actual-width 100))
+(custom-set-variables '(org-startup-folded t))
+(use-package org-bullets :ensure t :hook (org-mode . org-bullets-mode))
+;; Disable weird autoindent behaviors in orgmode
+(add-hook 'org-mode-hook (lambda () (electric-indent-mode 0)))
+(setq org-edit-src-content-indentation 0)
 
 ;; Cursor
 (custom-set-variables '(cursor-type '(bar . 4)))
