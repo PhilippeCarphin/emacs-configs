@@ -5,6 +5,7 @@
 (scroll-bar-mode -1)
 (custom-set-variables '(custom-enabled-themes '(misterioso)))
 (custom-set-variables '(org-startup-with-inline-images t))
+(custom-set-variables '(org-startup-folded t))
 (custom-set-variables '(org-image-actual-width 100))
 
 ;; Cursor
