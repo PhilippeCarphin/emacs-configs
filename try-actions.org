@@ -18,6 +18,7 @@ Orgmode is as easy to write as markdown but offers so much more cool stuff.
 - Inline markup with *bold* (=*bold*=), /italic/ (=/italic/=), =code()= (~=code()=~), ~verbatim~ (=~verbatim~=)
 - Source code blocks use =#+begin_src <lang>= ... =#+end_src=.  We can use =C-c C-,= to insert these tags.
 - the TAB to control visibility
+- Links use the =[[link url][link display]]= format.
 ** Level 1 : Exporting
 C-c C-e h o to export to HTML (C-c C-e gives all the options)
 [[https://orgmode.org/manual/Exporting.html][Orgmode doc: Exporting]]
