@@ -14,8 +14,9 @@
 (setq org-edit-src-content-indentation 0)
 
 ;; Cursor
-(custom-set-variables '(cursor-type '(bar . 4)))
+(custom-set-variables '(cursor-type '(bar . 2)))
 (custom-set-faces '(cursor ((t (:background "SlateGray3")))))
+(setq bilk-cursor-blinks 0)
 (blink-cursor-mode)
 
 ;; Higlight current line
