@@ -17,3 +17,5 @@
 (use-package ox-reveal :ensure t
   :config (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
 (use-package htmlize :ensure t)
+
+(set-language-environment "UTF-8")
