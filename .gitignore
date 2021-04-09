@@ -2,3 +2,4 @@
 /elpa/
 transient
 *.html
+/elisp/elpa/
