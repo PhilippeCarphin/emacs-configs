@@ -1,0 +1,62 @@
+#+TITLE: Try and demo multiple emacs configs
+
+* Idea
+
+Start one of the many executables in =./bin= to laucnh emacs with the current
+directory as the =user-emacs-directory=.
+
+Any of the configs may be tried by going to =./configs/org-agenda-basic= and
+running =ed=.
+
+* Extra configs
+
+
+** Trying configs with evil mode
+If you can't live without evil mode, use =ecv= instead.  It will do the same
+thing: load emacs with the PWD as the user config directory but it will also
+load =evil-mode=.
+
+** Helm
+
+Same thing as for evil-mode, =bin/edh= will add helm to whatever config you are
+trying.
+
+** Basic configs
+
+If you want to try things but stock emacs hurts your eyes, use =./bin/edb=
+instead of =./bin/ed=.
+
+** Combinations
+
+Based on =v,h,b=, the following commands give different combinations of
+=evil-mode=, =helm=, and =basic-configs=:
+- ed
+- edv
+- edvh
+- edvhb
+- edh
+- edhb
+- edb
+
+** Daemon
+
+The same scripts are available for people who want to do the daemon thing.
+
+- ecd
+- ecdv
+- ecdvh
+- ecdvhb
+- ecdh
+- ecdhb
+- ecdb
+  
+The command is a wrapper for =emacsclient= which requires a server.
+
+Start the emacs daemon by using the command with =$1 == "-s"= and instead of
+forwarding arguments to =emacsclient=, the scritp will instead start a daemon
+with socket named after the basename of PWD.
+
+The wrapper also uses this socket name when calling emacsclient.
+
+Therefore you can try multiple emacs configs with separate daemons like this.
+
