@@ -17,7 +17,7 @@ git clone https://github.com/philippecarphin/emacs-configs
 Add the repo's =./bin= directory to your =PATH= environment variable
 
 #+begin_src shell
-export PATH=$PATH:$PWD/emacs-configs/bin
+source emacs-configs/source-me.sh
 #+end_src
 
 You can =cd= to any directory that contains an =init.el= file and run the
