@@ -2,61 +2,66 @@
 
 * Idea
 
-Start one of the many executables in =./bin= to laucnh emacs with the current
-directory as the =user-emacs-directory=.
+You can =cd= to any directory and use =e= to launch =emacs= with this directory
+instead of =~/.emacs.d=.  There is also =ed= and =ec= to work with the daemon
+and client.
 
-Any of the configs may be tried by going to =./configs/org-agenda-basic= and
-running =ed=.
+* How to use it
+
+Clone the repo
+
+#+begin_src shell
+git clone https://github.com/philippecarphin/emacs-configs
+#+end_src
+
+Add the repo's =./bin= directory to your =PATH= environment variable
+
+#+begin_src shell
+export PATH=$PATH:$PWD/emacs-configs/bin
+#+end_src
+
+You can =cd= to any directory that contains an =init.el= file and run the
+command =ed= (emacs with directory).  This starts emacs using =$PWD= instead of
+=~/.emacs.d=.
 
 * Extra configs
 
+It's all the same executable with links pointing to it.
 
-** Trying configs with evil mode
+Doing =e[d][v][h][b]= (ex =edh= or =evb=) will add certain things.
+
+** v : evil-mode
 If you can't live without evil mode, use =ecv= instead.  It will do the same
 thing: load emacs with the PWD as the user config directory but it will also
 load =evil-mode=.
 
-** Helm
+** d : daemon
 
-Same thing as for evil-mode, =bin/edh= will add helm to whatever config you are
-trying.
+Launch with =--daemon=$(basename $PWD)=.  Use =ec= (=emacsclient -s $(basename
+$PWD)=) to connect to this daemon.
 
-** Basic configs
+** h : Helpers : Helm and Which-key
 
-If you want to try things but stock emacs hurts your eyes, use =./bin/edb=
-instead of =./bin/ed=.
+Helm is really useful completion help for opening files and entering commands
 
-** Combinations
+Which-key gives you a pop up with possible keys to complete sequences.
 
-Based on =v,h,b=, the following commands give different combinations of
-=evil-mode=, =helm=, and =basic-configs=:
-- ed
-- edv
-- edvh
-- edvhb
-- edh
-- edhb
-- edb
+** b : Bare necessities
 
-** Daemon
-
-The same scripts are available for people who want to do the daemon thing.
-
-- ecd
-- ecdv
-- ecdvh
-- ecdvhb
-- ecdh
-- ecdhb
-- ecdb
+Stock emacs can hurt your eyes, add 'b' to to the command to add minor behavior
+tweaks and loading of =misterioso= color theme.
   
-The command is a wrapper for =emacsclient= which requires a server.
+* Use cases
 
-Start the emacs daemon by using the command with =$1 == "-s"= and instead of
-forwarding arguments to =emacsclient=, the scritp will instead start a daemon
-with socket named after the basename of PWD.
+** Demonstrating simplicity
 
-The wrapper also uses this socket name when calling emacsclient.
+If I want to show "Look what little configuration I need to do this cool thing",
+I might try it with =ev= just to have emacs look ultra stock but adding
+evil-mode because I can't live without it.
 
-Therefore you can try multiple emacs configs with separate daemons like this.
+** Demonstrating features
+
+If I want to show cool features without worrying about how anything is
+configured, I'll use =evhb= to get a good looking emacs with evil-mode and helm
+so I can fly while I demonstrate things.
 
