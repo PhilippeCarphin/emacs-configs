@@ -23,11 +23,12 @@ socket=$(basename $user_emacs_directory)
 # Intercept for certain first arguments
 case $1 in
     -s)
-        emacs --daemon=$socket -q --eval "
-        (progn (setq user-emacs-directory \"$user_emacs_directory/\")
-        (load-file (concat user-emacs-directory \"init.el\"))
-        (load-file \"$base_dir/configs/bootstrap.el\")
-        (load-file \"$base_dir/configs/evil-config.el\"))"
+        emacs --daemon=$socket -q --eval " (progn
+            (setq user-emacs-directory \"$user_emacs_directory/\")
+            (tool-bar-mode -1)
+            (load-file (concat user-emacs-directory \"init.el\"))
+            (load-file \"$base_dir/configs/bootstrap.el\")
+            (load-file \"$base_dir/configs/evil-config.el\"))"
         exit 0
         ;;
 esac

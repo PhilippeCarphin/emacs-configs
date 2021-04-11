@@ -24,12 +24,10 @@ socket=$(basename $user_emacs_directory)
 case $1 in
     -s)
         emacs --daemon=$socket -q --eval "
-        (progn (setq user-emacs-directory \"$user_emacs_directory/\")
-        (tool-bar-mode -1)
-        (load-file (concat user-emacs-directory \"init.el\"))
-        (load-file \"$base_dir/configs/bootstrap.el\")
-        (load-file \"$base_dir/configs/evil-config.el\")
-        (load-file \"$base_dir/configs/helpers.el\"))"
+          (progn (setq user-emacs-directory \"$user_emacs_directory/\")
+                 (tool-bar-mode -1)
+                 (load-file (concat user-emacs-directory \"init.el\"))
+                 (load-file \"$base_dir/configs/basic-configs.el\"))"
         exit 0
         ;;
 esac
