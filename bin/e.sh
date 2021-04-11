@@ -20,7 +20,6 @@ fi
 $base_dir/bin/check-version.sh
 
 socket=$(basename $user_emacs_directory)
-# Intercept for certain first arguments
 
 code="(progn (setq user-emacs-directory \"$user_emacs_directory\") "
 code+=$'\n  (load-file (concat user-emacs-directory "init.el"))'
@@ -41,4 +40,8 @@ fi
 code+=$'\n)'
 
 echo "$code"
-emacs -q --eval "$code" $@
+if [[ "$prog" == *d* ]] ; then
+    emacs -q --daemon=$socket --eval "$code" $@
+else
+    emacs -q --eval "$code" $@
+fi
