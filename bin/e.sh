@@ -23,6 +23,7 @@ socket=$(basename $user_emacs_directory)
 
 code="(progn (setq user-emacs-directory \"$user_emacs_directory\") "
 code+=$'\n  (load-file (concat user-emacs-directory "init.el"))'
+code+=$'\n '"(global-set-key (kbd \"C-x C-c\") 'save-buffers-kill-emacs)"
 code+=$'\n  (tool-bar-mode -1)'
 prog=$(basename $0)
 if [[ "$prog" == *b* ]] ; then
