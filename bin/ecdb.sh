@@ -19,6 +19,8 @@ if ! [ -e $user_emacs_directory/init.el ] ; then
     exit 1
 fi
 
+$base_dir/bin/check-version.sh
+
 socket=$(basename $user_emacs_directory)
 # Intercept for certain first arguments
 case $1 in
