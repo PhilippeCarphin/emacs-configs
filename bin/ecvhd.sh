@@ -27,7 +27,8 @@ case $1 in
         (progn (setq user-emacs-directory \"$user_emacs_directory/\")
         (load-file (concat user-emacs-directory \"init.el\"))
         (load-file \"$base_dir/configs/bootstrap.el\")
-        (load-file \"$base_dir/configs/evil-config.el\"))"
+        (load-file \"$base_dir/configs/evil-config.el\")
+        (load-file \"$base_dir/configs/helpers.el\"))"
         exit 0
         ;;
 esac
