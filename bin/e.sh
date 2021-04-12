@@ -51,13 +51,11 @@ $base_dir/bin/check-version.sh
 socket=$(basename $user_emacs_directory)
 
 code="(progn"
-code+=$'\n '"(setq user-emacs-directory \"$user_emacs_directory\") "
+code+=$'\n '" (load-file \"$user_emacs_directory/init.el\")"
 if ! touch $user_emacs_directory ; then
     echo "user_emacs_directory '$user_emacs_directory' is not writable, using ~/.emacs.d/elpa as package-user-dir"
     mkdir -p ~/.emacs.d/elpa
-    code+=$'\n '"(setq package-user-dir \"~/.emacs.d/elpa\")"
 fi
-code+=$'\n '" (load-file \"$user_emacs_directory/init.el\")"
 code+=$'\n '"(global-set-key (kbd \"C-x C-c\") 'save-buffers-kill-emacs)"
 code+=$'\n  (tool-bar-mode -1)'
 prog=$(basename $0)
@@ -75,7 +73,7 @@ if [[ "$prog" == *h* ]] ; then
 fi
 code+=$'\n)'
 
-echo "$code"
+# echo "$code"
 if [[ "$prog" == *d* ]] ; then
     emacs -q --daemon=$socket --eval "$code" $@
 else
