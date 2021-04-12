@@ -50,8 +50,14 @@ $base_dir/bin/check-version.sh
 
 socket=$(basename $user_emacs_directory)
 
-code="(progn (setq user-emacs-directory \"$user_emacs_directory\") "
-code+=$'\n  (load-file (concat user-emacs-directory "init.el"))'
+code="(progn"
+code+=$'\n '" (load-file \"$user_emacs_directory/init.el\")"
+
+code+=$'\n '"(setq user-emacs-directory \"$user_emacs_directory\") "
+if ! touch $user_emacs_directory ; then
+    echo "user_emacs_directory '$user_emacs_directory' is not writable, using ~/.emacs.d/elpa as package-user-dir"
+    code+=$'\n '"(setq package-user-dir \"$PWD\")"
+fi
 code+=$'\n '"(global-set-key (kbd \"C-x C-c\") 'save-buffers-kill-emacs)"
 code+=$'\n  (tool-bar-mode -1)'
 prog=$(basename $0)
