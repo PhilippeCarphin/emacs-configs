@@ -6,6 +6,10 @@ You can =cd= to any directory and use =e= to launch =emacs= with this directory
 instead of =~/.emacs.d=.  There is also =ed= and =ec= to work with the daemon
 and client.
 
+If your =PWD= is not an emacs config directory (does not contain an =init.el=
+file), then when launching =e=, you will be offered to choose one of the configs
+in this repo.
+
 * How to use it
 
 Clone the repo
@@ -24,7 +28,9 @@ You can =cd= to any directory that contains an =init.el= file and run the
 command =ed= (emacs with directory).  This starts emacs using =$PWD= instead of
 =~/.emacs.d=.
 
-* Extra configs
+
+
+* Addons
 
 It's all the same executable with links pointing to it.
 

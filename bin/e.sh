@@ -13,8 +13,37 @@ user_emacs_directory=$(pwd)/
 
 echo "USER_EMACS_DIRECTORY = $user_emacs_directory"
 if ! [ -e $user_emacs_directory/init.el ] ; then
-    echo "ERROR: No init.el in user_emacs_directory ($1 must be the path of an emacs config dir)"
-    exit 1
+    echo "$0 : No init.el in user_emacs_directory ($1 must be the path of an emacs config dir)"
+    echo "Select from 1:babel-basic 2:fast-notes 3:org-export-config 4:org-agenda-basic 5:org-agenda-intermediate 6:good-to-go 7:helpers"
+    read answer
+    case $answer in
+        1)
+            user_emacs_directory=$base_dir/configs/basic-configs/
+            ;;
+        2)
+            user_emacs_directory=$base_dir/configs/fast-notes/
+            ;;
+        3)
+            user_emacs_directory=$base_dir/configs/org-export-config/
+            ;;
+        4)
+            user_emacs_directory=$base_dir/configs/org-agenda-basic/
+            ;;
+        5)
+            user_emacs_directory=$base_dir/configs/org-agenda-intermediate/
+            ;;
+        6)
+            user_emacs_directory=$base_dir/configs/gtg/
+            ;;
+        7)
+            user_emacs_directory=$base_dir/configs/helpers/
+            ;;
+        *)
+            echo "unknown choice '$answer"
+            exit 1
+            ;;
+    esac
+
 fi
 
 $base_dir/bin/check-version.sh
