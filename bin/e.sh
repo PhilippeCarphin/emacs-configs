@@ -54,6 +54,7 @@ code="(progn"
 code+=$'\n '"(setq user-emacs-directory \"$user_emacs_directory\") "
 if ! touch $user_emacs_directory ; then
     echo "user_emacs_directory '$user_emacs_directory' is not writable, using ~/.emacs.d/elpa as package-user-dir"
+    mkdir -p ~/.emacs.d/elpa
     code+=$'\n '"(setq package-user-dir \"$PWD\")"
 fi
 code+=$'\n '" (load-file \"$user_emacs_directory/init.el\")"
