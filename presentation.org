@@ -1,0 +1,79 @@
+#+TITLE: Try emacs configs
+
+* Motivation
+
+** Learning emacs
+
+People's config files or our own config file may have too much stuff to
+understand what is needed for what features
+
+** Teaching emacs
+
+Demonstrate features using the minimal required configuration without needing to
+touch your own emacs config
+
+This is usefule for demonstrating many separate independant configs.
+
+* How it works
+
+** Install
+
+Simply clone the repo somewhere
+
+#+begin_src shell
+git clone https://github.com/philippecarphin/emacs-configs
+#+end_src
+
+and add it's =bin= subdirectory to your path by sourcing the =source-me.sh= file
+that comes with the repo.
+
+** Use
+
+*** Meaning of emacs config directory
+
+I define an /emacs config directory/ is a directory to be a directory that
+contains an =init.el=file.
+
+*** Using one of the provided configs
+
+Simply run the command =e= while not in an emacs config directory.
+
+You will be prompted to choose from one of the configs that comes with this repo.
+
+#+begin_src shell
+$ e
+USER_EMACS_DIRECTORY = /Users/pcarphin/Documents/GitHub/emacs-configs/configs/
+/Users/pcarphin/.local/bin/eb : No init.el in user_emacs_directory ( must be the path of an emacs config dir)
+Select from 1:babel-basic 2:fast-notes 3:org-export-config 4:org-agenda-basic 5:org-agenda-intermediate 6:good-to-go 7:helpers
+2
+[...]
+#+end_src
+
+*** Using any emacs config directory
+
+Run the command =e= while in an emacs config directory:
+
+#+begin_src e
+$ e
+USER_EMACS_DIRECTORY = /Users/pcarphin/Documents/GitHub/emacs-configs/configs/babel-basic/
+[...]
+#+end_src
+
+
+** Variants
+
+*** Lots of links to =e.sh=
+
+By calling =e= throught links, we change the value of =$0=.
+
+This is used to create a bunch of links of the form e[d][v][h][b].
+
+*** What the letters do
+
+The logic is simple: if =$0= contains one of =v,h,b=, more elisp code is
+loaded at initialization than just the =init.el= of the selected emacs config
+directory.
+
+| v | add evil-mode config           |
+| h | add helpers (helm + which-key) |
+| b | add basic tweaks               |
