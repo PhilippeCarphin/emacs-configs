@@ -1,5 +1,12 @@
 #!/bin/bash
 
+emacs_version=$(emacs --version | head -n 1 | cut -d ' ' -f 3)
+emacs_major_version=${emacs_version%%.*}
+if (($emacs_major_version < 27)) ; then
+    echo "ERROR : Emacs 27 is required"
+    exit 1
+fi
+
 py_follow_links()
 {
     python -c "import os,sys; print(os.path.realpath(sys.argv[1]))" $1
