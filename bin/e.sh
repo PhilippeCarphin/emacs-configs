@@ -61,9 +61,10 @@ code="(progn"
 
 # User emacs directory
 if ! touch $temp_user_emacs_directory ; then
-    echo "user_emacs_directory '$user_emacs_directory' is not writable, using ~/.emacs.d/elpa as package-user-dir"
-    mkdir -p ~/.emacs.d/elpa
-    code+=$'\n  '"(setq package-user-dir \"~/.emacs.d/elpa\")"
+    tmp_package_dir=~/emacs.tmp.d/elpa
+    echo "user_emacs_directory '$user_emacs_directory' is not writable, using '$tmp_package_dir' as package-user-dir"
+    mkdir -p $tmp_package_dir
+    code+=$'\n  '"(setq package-user-dir \"$tmp_package_dir\")"
 fi
 user_emacs_directory=$temp_user_emacs_directory
 code+=$'\n  '"(setq user-emacs-directory \"$user_emacs_directory\")"
