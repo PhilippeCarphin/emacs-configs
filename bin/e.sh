@@ -40,7 +40,7 @@ if ! [ -e $temp_user_emacs_directory/init.el ] ; then
             temp_user_emacs_directory=$base_dir/configs/org-agenda-intermediate/
             ;;
         6)
-            temp_user_emacs_directory=$base_dir/configs/gtg/
+            temp_user_emacs_directory=$base_dir/configs/good-to-go/
             ;;
         7)
             temp_user_emacs_directory=$base_dir/configs/helpers/
